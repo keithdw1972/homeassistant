@@ -1,0 +1,109 @@
+- id: '1733871783890'
+  alias: 'AutoBackup: Unified Auto Backups'
+  description: Unified Auto Backups
+  triggers:
+  - at: 02:30:00
+    trigger: time
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ now().day == 1 }}'
+      sequence:
+      - data:
+          keep_days: 365
+          name: 'MonthlyBackup: {{ now().strftime(''%A, %B %-d, %Y'') }}'
+        action: auto_backup.backup
+    - conditions:
+      - condition: time
+        weekday:
+        - mon
+      sequence:
+      - data:
+          keep_days: 28
+          name: 'WeeklyBackup: {{ now().strftime(''%A, %B %-d, %Y'') }}'
+        action: auto_backup.backup
+    - conditions:
+      - condition: time
+        weekday:
+        - sun
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+      sequence:
+      - data:
+          keep_days: 7
+          name: 'DailyBackup: {{ now().strftime(''%A, %B %-d, %Y'') }}'
+        action: auto_backup.backup
+  mode: single
+- id: '1733871905555'
+  alias: 'AutoBackup: 3 Hourly Partial Backups'
+  description: 3 Hourly Partial Backups
+  triggers:
+  - hours: /3
+    trigger: time_pattern
+  actions:
+  - data:
+      name: 'AutoBackup: {{ now().strftime(''%a, %-I:%M %p (%d/%m/%Y)'') }}'
+      addons:
+      - core_mariadb
+      - core_mosquitto
+      folders:
+      - homeassistant
+      - share
+      - ssl
+      keep_days: 2
+    action: auto_backup.backup_partial
+- id: '1733872570210'
+  alias: Christmas Tree On
+  description: ''
+  triggers:
+  - trigger: time
+    at: 06:30:00
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 2e35dd89428fc67b2291cef713734402
+    entity_id: 5fe76b98513a2221d7c6965a0916ee10
+    domain: switch
+  mode: single
+- id: '1733872608518'
+  alias: Christmas Tree Off
+  description: ''
+  triggers:
+  - trigger: time
+    at: '23:00:00'
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 2e35dd89428fc67b2291cef713734402
+    entity_id: 5fe76b98513a2221d7c6965a0916ee10
+    domain: switch
+  mode: single
+- id: '1733949910839'
+  alias: Turn off Entrance Hall Light
+  description: Turn off Entrance Hall Light
+  triggers:
+  - trigger: time
+    at: '22:00:00'
+  conditions: []
+  actions:
+  - action: script.dim_entrance_hall_to_off
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1733953249938'
+  alias: Turn off Stairwell Light
+  description: Turn off Stairwell Light
+  triggers:
+  - trigger: time
+    at: '19:30:00'
+  conditions: []
+  actions:
+  - action: script.dim_stairwell_light_to_off_duplicate
+    metadata: {}
+    data: {}
+  mode: single

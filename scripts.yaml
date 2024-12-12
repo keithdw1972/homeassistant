@@ -1,0 +1,78 @@
+new_script:
+  alias: 'Dim Light Slowly Over One Hour: Entrance Hall'
+  sequence:
+  - sequence:
+    - repeat:
+        count: 60
+        sequence:
+        - sequence:
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.entrance_hall_bulb
+            data:
+              brightness_step_pct: '{{ 100 - repeat.index }}'
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 1
+              milliseconds: 0
+  description: 'Dim Light Slowly Over One Hour: Entrance Hall'
+dim_light_slowly_over_one_hour_stairwell_light:
+  alias: 'Dim Light Slowly Over One Hour: Stairwell Light'
+  sequence:
+  - sequence:
+    - repeat:
+        count: 60
+        sequence:
+        - sequence:
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.stairwell_light
+            data:
+              brightness_step_pct: '{{ 100 - repeat.index }}'
+          - delay:
+              hours: 0
+              minutes: 1
+              seconds: 0
+              milliseconds: 0
+  description: 'Dim Light Slowly Over One Hour: Stairwell Light'
+increase_or_decrease_light_brightness_over_time:
+  alias: Increase or decrease light brightness over time
+  use_blueprint:
+    path: op00/increase-or-decrease-light-brightness-over-time.yaml
+    input:
+      light_entity: light.entrance_hall_bulb
+      transition_time: 3600
+      target_brightness: 0
+      initial_brightness: 100
+      brightness_step: 1
+  description: ''
+dim_entrance_hall_to_off:
+  alias: Dim Entrance Hall to Off
+  use_blueprint:
+    path: op00/increase-or-decrease-light-brightness-over-time.yaml
+    input:
+      light_entity: light.entrance_hall_bulb
+      transition_time: 3600
+      target_brightness: 0
+      initial_brightness: 100
+      brightness_step: 1
+  description: ''
+dim_stairwell_light_to_off_duplicate:
+  alias: Dim Stairwell Light to Off
+  use_blueprint:
+    path: op00/increase-or-decrease-light-brightness-over-time.yaml
+    input:
+      light_entity: light.stairwell_light
+      transition_time: 3600
+      target_brightness: 0
+      initial_brightness: 100
+      brightness_step: 1
+  description: ''
+notify_alexa:
+  alias: Notify Alexa
+  use_blueprint:
+    path: TheAppleFreak/notify_alexa.yaml
+  description: ''
