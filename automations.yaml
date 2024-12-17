@@ -107,3 +107,56 @@
     metadata: {}
     data: {}
   mode: single
+- id: '1734387413059'
+  alias: Bed Time Routine
+  description: Bed Time Routine
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.keith_iphone_battery_status
+    to: Charging
+  conditions:
+  - condition: time
+    after: '22:30:00'
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+    - sun
+  - condition: device
+    device_id: 6861b33fd340b04830238d503678acb9
+    domain: device_tracker
+    entity_id: b9002b2e99d55f38c5e90b3a6d955da8
+    type: is_home
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.christmas_tree
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.entrance_hall_bulb
+      - light.stairwell_light
+  mode: single
+- id: '1734388662992'
+  alias: Wake Up Keith
+  description: Wake Up Keith
+  triggers:
+  - trigger: time
+    at: 06:45:00
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - light.stairwell_light
+  mode: single
