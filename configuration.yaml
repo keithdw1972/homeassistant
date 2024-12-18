@@ -41,4 +41,8 @@ scene: !include scenes.yaml
 #integrations:
 powercalc: !include_dir_named /integrations/powercalc
 #tesla: !include_dir_named /integrations/tesla
-#homekit: !include_dir_named /integrations/homekit
+homekit: !include_dir_named /integrations/homekit
+
+#databases
+logger: !include_dir_named /databases/logger
+recorder: !include_dir_named  /databases/recorder
