@@ -1,6 +1,34 @@
-
+#################################################################
+#                                                               #
+#           Home Assistant Main Configuration File              #
+#                                                               #
+#################################################################
 # Loads default set of integrations. Do not remove.
 default_config:
+config:
+#################################################################
+# https://www.home-assistant.io/docs/configuration/basic/
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Townhead of Aber
+  temperature_unit: C
+  ### The following installs all package files
+  packages: !include_dir_named packages
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_lat
+  longitude: !secret home_lon
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 40
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/London
+  auth_providers:
+   - type: homeassistant
+   - type: trusted_networks
+     trusted_networks:
+       - 192.168.170.0/24
+     allow_bypass_login: true
 
 # Load frontend themes from the themes folder
 frontend:
@@ -12,3 +40,5 @@ scene: !include scenes.yaml
 
 #integrations:
 powercalc: !include_dir_named /integrations/powercalc
+#tesla: !include_dir_named /integrations/tesla
+#homekit: !include_dir_named /integrations/homekit
