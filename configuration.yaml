@@ -36,8 +36,8 @@ homeassistant:
   #      192.168.1.24: 4cd6c52e90d84b0a96bda6f9c4b648c4  # User ID
 
 # Load frontend themes from the themes folder
-frontend:
-  themes: !include_dir_merge_named themes
+#frontend:
+#  themes: !include_dir_merge_named themes
 
 automation: !include automations.yaml
 script: !include scripts.yaml

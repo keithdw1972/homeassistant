@@ -1,0 +1,8 @@
+homekit:
+- name: Tado
+  port: 50002
+
+  entity_config: !include_dir_named ../../customizations/homekit/tado
+
+  filter:
+    include_entities: !include_dir_named ../assistants/homekit/tado
