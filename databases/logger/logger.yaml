@@ -1,4 +1,12 @@
-default: info
-logs:
-    homeassistant.components.homekit: debug
-    pyhap: debug
+logger:
+    default: warning
+
+
+    #logs:
+#    homeassistant.components.homekit: debug
+#    pyhap: debug
+#    #custom_components.hildebrandglow_dcc: critical
+#    #custom_components.nest_protect: critical
+#    #tesla_custom: critical
+#    #hypervolt_charger: critical
+#    hacs: critical

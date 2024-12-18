@@ -1,0 +1,7 @@
+homekit:
+- name: Switches
+  port: 50001
+  filter:
+    include_entities:
+      - switch.christmas_tree
+      - switch.kitchen_shelf_plug

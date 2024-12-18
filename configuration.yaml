@@ -13,7 +13,7 @@ homeassistant:
   name: Townhead of Aber
   temperature_unit: C
   ### The following installs all package files
-  packages: !include_dir_named packages
+  packages: !include_dir_named integrations
   # Location required to calculate the time the sun rises and sets
   latitude: !secret home_lat
   longitude: !secret home_lon
@@ -23,12 +23,17 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
+  
+  ### The following installs all customizions
+  customize: !include customize.yaml
+  customize_glob: !include customize_glob.yaml
   auth_providers:
-   - type: homeassistant
-   - type: trusted_networks
-     trusted_networks:
-       - 192.168.170.0/24
-     allow_bypass_login: true
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.170.0/24
+  #    trusted_users:
+  #      192.168.1.24: 4cd6c52e90d84b0a96bda6f9c4b648c4  # User ID
 
 # Load frontend themes from the themes folder
 frontend:
@@ -39,10 +44,15 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 #integrations:
-powercalc: !include_dir_named /integrations/powercalc
-#tesla: !include_dir_named /integrations/tesla
-homekit: !include_dir_named /integrations/homekit
+#homekit: !include_dir_named integrations/homekit
 
-#databases
-logger: !include_dir_named /databases/logger
-recorder: !include_dir_named  /databases/recorder
+#homekit:
+#- name: Lights
+#  port: 50000
+#  filter:
+#    include_entities:
+#      - light.desk_lamp
+#      - light.entrance_hall_bulb
+#      - light.keiths_lamp
+#      - light.overhead_light
+#      - light.stairwell_light

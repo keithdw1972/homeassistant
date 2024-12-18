@@ -1,0 +1,10 @@
+homekit:
+- name: Lights
+  port: 50000
+  filter:
+    include_entities:
+      - light.desk_lamp
+      - light.entrance_hall_bulb
+      - light.keiths_lamp
+      - light.overhead_light
+      - light.stairwell_light

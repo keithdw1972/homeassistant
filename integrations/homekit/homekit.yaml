@@ -1,4 +1,0 @@
-filter:
-  include_domains:
-    - light
-  exclude_domains:
