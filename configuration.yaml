@@ -11,4 +11,4 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 #integrations:
-powercalc: !include_dir_named /integrations/powercalc 
+powercalc: !include_dir_named /integrations/powercalc

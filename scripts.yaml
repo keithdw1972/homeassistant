@@ -67,7 +67,7 @@ dim_stairwell_light_to_off_duplicate:
     input:
       light_entity: light.stairwell_light
       transition_time: 3600
-      target_brightness: 0
+      target_brightness: 5
       initial_brightness: 100
       brightness_step: 1
   description: ''

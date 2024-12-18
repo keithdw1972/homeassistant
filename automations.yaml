@@ -119,18 +119,28 @@
   - condition: time
     after: '22:30:00'
     weekday:
-    - mon
-    - tue
-    - wed
-    - thu
-    - fri
-    - sat
     - sun
-  - condition: device
-    device_id: 6861b33fd340b04830238d503678acb9
-    domain: device_tracker
-    entity_id: b9002b2e99d55f38c5e90b3a6d955da8
-    type: is_home
+    - sat
+    - fri
+    - thu
+    - wed
+    - tue
+    - mon
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.keith_iphone_battery_status
+      state: charging
+    - condition: time
+      after: '22:30:00'
+      weekday:
+      - sun
+      - sat
+      - fri
+      - thu
+      - wed
+      - tue
+      - mon
   actions:
   - action: switch.turn_off
     metadata: {}
@@ -144,6 +154,8 @@
       entity_id:
       - light.entrance_hall_bulb
       - light.stairwell_light
+      - light.overhead_light
+      - light.desk_lamp
   mode: single
 - id: '1734388662992'
   alias: Wake Up Keith
