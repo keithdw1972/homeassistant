@@ -1,8 +1,9 @@
 homekit:
 - name: Switches
   port: 50001
-
-  entity_config: !include_dir_named ../../customizations/homekit/switches
-
   filter:
-    include_entities: !include_dir_named ../assistants/homekit/switches
+    include_entities:
+      - switch.christmas_tree
+      - switch.kitchen_shelf_plug
+      - switch.dining_room_socket_right
+      - switch.kitchen_island_internal_right
