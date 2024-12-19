@@ -172,3 +172,24 @@
       entity_id:
       - light.stairwell_light
   mode: single
+- id: '1734622079787'
+  alias: Octopus Energy - Join Saving Session
+  description: ''
+  use_blueprint:
+    path: BottlecapDave/octopus_energy_octoplus_join_saving_session.yml.yaml
+    input:
+      saving_session_event_entity: event.octopus_energy_a_d6c81e8d_octoplus_saving_session_events
+- id: '1734622594516'
+  alias: Octopus Energy - Redeem Points For Account Credit
+  description: ''
+  use_blueprint:
+    path: BottlecapDave/octopus_energy_octoplus_redeem_points_for_account_credit.yml.yaml
+    input:
+      threshold: 100
+      octoplus_points_entity: sensor.octopus_energy_a_d6c81e8d_octoplus_points
+      actions:
+      - action: notify.persistent_notification
+        metadata: {}
+        data:
+          message: Octopoints Redeemed
+          title: Octopoints Redeemed

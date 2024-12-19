@@ -21,8 +21,16 @@ homeassistant:
   elevation: 40
   # metric for Metric, imperial for Imperial
   unit_system: metric
+  currency: GBP
+  country: GB
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
+
+  #Allow list external directories
+  allowlist_external_dirs:
+  #  - "/usr/var/dumping-ground"
+  #  - "/tmp"
+    - "/config"
   
   ### The following installs all customizions
   #customize: !include customize.yaml
