@@ -25,8 +25,8 @@ homeassistant:
   time_zone: Europe/London
   
   ### The following installs all customizions
-  customize: !include customize.yaml
-  customize_glob: !include customize_glob.yaml
+  #customize: !include customize.yaml
+  #customize_glob: !include customize_glob.yaml
   auth_providers:
     - type: homeassistant
     - type: trusted_networks
@@ -34,12 +34,4 @@ homeassistant:
         - 192.168.170.0/24
   #    trusted_users:
   #      192.168.1.24: 4cd6c52e90d84b0a96bda6f9c4b648c4  # User ID
-
-# Load frontend themes from the themes folder
-#frontend:
-#  themes: !include_dir_merge_named themes
-
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
 
