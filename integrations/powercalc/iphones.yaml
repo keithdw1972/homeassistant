@@ -1,0 +1,15 @@
+powercalc:
+  sensors:
+    - create_group: "Phone Charging"
+      entities:
+      #- entity_id: binary_sensor.iphone13pkw_phone_charging
+      - entity_id: sensor.iphone15pkdw_battery_state
+        name: "iPhone_Keith_Charging"
+        fixed:
+          power: "{{ iif(is_state('sensor.iphone15pkdw_battery_state', 'charging'), 10.5, 0.1) }}"
+      - entity_id: binary_sensor.iphone13cls_phone_charging
+        name: "iPhone_Catherine_Charging"
+        fixed:
+          power: "{{ iif(is_state('sensor.catherine_iphone_battery_status', 'charging'), 10.5, 0.1) }}"
+      create_utility_meters: false
+      

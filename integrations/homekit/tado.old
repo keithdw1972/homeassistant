@@ -1,0 +1,9 @@
+homekit:
+- name: Tado
+  port: 50002
+  #filter:
+    include_entities:
+    - #climate.snug_radiator
+    - #climate.upstairs_radiator
+    - #climate.keith_s_study_radiator
+    - #climate.master_bedroom_radiator

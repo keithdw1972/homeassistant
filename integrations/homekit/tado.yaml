@@ -1,9 +1,0 @@
-homekit:
-- name: Tado
-  port: 50002
-  filter:
-    include_entities:
-      - climate.kitchen
-      - climate.master_bedroom
-      - climate.snug
-      - climate.stairs

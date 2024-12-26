@@ -1,0 +1,6 @@
+powercalc:
+  sensors:
+    - name: Solar
+      daily_fixed_energy:
+        value: 0
+        unit_of_measurement: W
