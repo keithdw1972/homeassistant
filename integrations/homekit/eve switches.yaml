@@ -1,0 +1,7 @@
+homekit:
+- name: 'Eve Switches'
+  port: 50002
+  filter:
+    include_entities:
+      - switch.study_computer_power_socket
+      - switch.kitchen_shelf_power_socket
